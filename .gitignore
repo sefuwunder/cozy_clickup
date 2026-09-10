@@ -2,3 +2,7 @@
 *.ez
 /build
 erl_crash.dump
+
+# generated at runtime, never commit
+tasks.json
+render.json
