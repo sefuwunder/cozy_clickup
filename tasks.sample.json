@@ -1,1 +1,46 @@
-{"tasks":[{"due":"DEC 24","name":"Ship the 8-bit quest board","priority":"urgent","status":"In Progress"},{"due":"","name":"Refactor the renderer palettes","priority":"high","status":"To Do"},{"due":"DEC 31","name":"Write the README with screenshots","priority":"normal","status":"To Do"},{"due":"","name":"Pick a cozier lantern flame","priority":"low","status":"Review"},{"due":"","name":"Celebrate with hot cocoa","priority":"","status":"Complete"},{"due":"JAN 09","name":"Plan the next dungeon sprint","priority":"high","status":"To Do"}]}
+{
+  "tasks": [
+    {
+      "due": "DEC 24",
+      "name": "Ship the 8-bit quest board",
+      "priority": "urgent",
+      "status": "In Progress",
+      "due_iso": "2026-12-24"
+    },
+    {
+      "due": "",
+      "name": "Refactor the renderer palettes",
+      "priority": "high",
+      "status": "To Do",
+      "due_iso": "2026-12-31"
+    },
+    {
+      "due": "DEC 31",
+      "name": "Write the README with screenshots",
+      "priority": "normal",
+      "status": "To Do",
+      "due_iso": "2027-01-09"
+    },
+    {
+      "due": "",
+      "name": "Pick a cozier lantern flame",
+      "priority": "low",
+      "status": "Review",
+      "due_iso": "2026-12-28"
+    },
+    {
+      "due": "",
+      "name": "Celebrate with hot cocoa",
+      "priority": "",
+      "status": "Complete",
+      "due_iso": "2027-01-15"
+    },
+    {
+      "due": "JAN 09",
+      "name": "Plan the next dungeon sprint",
+      "priority": "high",
+      "status": "To Do",
+      "due_iso": "2026-12-20"
+    }
+  ]
+}

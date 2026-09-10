@@ -1,0 +1,11 @@
+[Unit]
+Description=Cozy ClickUp: remind about tasks due soon
+Documentation=https://github.com/sefuwunder/cozy_clickup
+
+[Service]
+Type=oneshot
+# Adjust this path to wherever you cloned the repo:
+WorkingDirectory=%h/cozy_clickup
+ExecStart=%h/cozy_clickup/tools/remind.sh
+# Make sure the fetcher knows which ClickUp list to read:
+Environment=CLICKUP_LIST_ID=

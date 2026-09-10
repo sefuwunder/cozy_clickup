@@ -42,6 +42,42 @@ in secure storage and never printed), writes `tasks.json`, and opens the
 window. For a fully hands-free refresh on a schedule, ask your assistant to
 set it up.
 
+## Reminders (Linux desktop notifications)
+
+`tools/remind.py` watches `tasks.json` and pops a system notification
+for tasks that are overdue or due within the next 36 hours
+(`--within HOURS` to change that). It needs `due_iso` on each task — an
+ISO 8601 date or datetime like `"2026-09-10"` or
+`"2026-09-10T14:30:00-04:00"` (the ClickUp fetcher writes this; the
+sample file shows the shape). Completed tasks are skipped.
+
+You need `notify-send` (`libnotify-bin` on Debian/Ubuntu). Try it:
+
+```sh
+python3 tools/remind.py --demo          # test notification
+python3 tools/remind.py --dry-run       # preview without notifying
+```
+
+To get reminded automatically every 30 minutes, install the systemd
+user units on the machine where you run the board:
+
+```sh
+mkdir -p ~/.config/systemd/user
+cp tools/cozy-clickup-remind.service tools/cozy-clickup-remind.timer \
+   ~/.config/systemd/user/
+# edit the service file: fix the WorkingDirectory/ExecStart paths and
+# set CLICKUP_LIST_ID to your list id
+systemctl --user daemon-reload
+systemctl --user enable --now cozy-clickup-remind.timer
+```
+
+Prefer cron? This works too, but `notify-send` needs your desktop
+session bus, so keep the `DBUS_SESSION_BUS_ADDRESS` line:
+
+```cron
+*/30 * * * * DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus /path/to/cozy_clickup/tools/remind.sh
+```
+
 ## How it works
 
 - `src/cozy_clickup.gleam` — reads `tasks.json`, keeps the first 12 tasks,
